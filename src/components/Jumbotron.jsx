@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../styles/Jumbotron.css";
-import shoppingBag from "../img/shopping-bag.jpg";
 
 class Jumbotron extends Component {
   state = {};
