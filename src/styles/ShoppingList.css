@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap");
+
+.list-container {
+  width: 60%;
+  margin: 0 auto;
+  font-family: "Montserrat";
+}
+
+.list-title {
+  background: rgb(104, 104, 104);
+  color: white;
+  border: 2px solid white;
+  font-size: 50px;
+  font-weight: 700;
+  text-align: center;
+  border-radius: 50px;
+  box-shadow: 28px 28px 56px #c2c2c2, -28px -28px 56px #c2c2c2;
+  margin: 40px;
+}
+
+.shoppingListTable {
+  border-radius: 50px;
+  box-shadow: 28px 28px 56px #c2c2c2, -28px -28px 56px #c2c2c2;
+  padding: 50px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 2px solid black;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #dfdfdf;
+  border-radius: 10px;
+  list-style-type: none;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+}
+
+.badge {
+  margin: 10px;
+}
+
+.arrows {
+  width: 10px;
+}
+
+.purchase-btn {
+  margin: 40px 0 0 0;
+  text-align: right;
+}
