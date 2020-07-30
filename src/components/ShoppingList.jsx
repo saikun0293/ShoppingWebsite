@@ -21,7 +21,7 @@ class ShoppingList extends Component {
 
   handleDelete = (d) => {
     console.log(d);
-    api.delete("/" + d.id).then(function (res) {
+    api.delete("/" + d._id).then(function (res) {
       console.log(res);
     });
 
@@ -65,7 +65,7 @@ class ShoppingList extends Component {
           {this.state.items.map((d) => {
             let item = d.data;
             return (
-              <div key={d.id} className="row">
+              <div key={d._id} className="row">
                 <div className="item col-md-11">
                   <li>{item.productDisplayName}</li>
                   <span>
