@@ -3,7 +3,8 @@ import Axios from "axios";
 import "../styles/ShoppingList.css";
 
 const api = Axios.create({
-  baseURL: "http://localhost:5000/selectedItems",
+  baseURL:
+    "https://crudcrud.com/Dashboard/2982f1a0023140af943bf92217409658/selectedItems",
 });
 
 class ShoppingList extends Component {
