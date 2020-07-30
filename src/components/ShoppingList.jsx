@@ -4,7 +4,7 @@ import "../styles/ShoppingList.css";
 
 const api = Axios.create({
   baseURL:
-    " https://my-json-server.typicode.com/SaitejareddyTileti-0293/ShoppingWebsiteServer",
+    " https://my-json-server.typicode.com/SaitejareddyTileti-0293/ShoppingWebsiteServer/db",
 });
 
 class ShoppingList extends Component {
