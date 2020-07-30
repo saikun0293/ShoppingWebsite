@@ -6,7 +6,8 @@ import Axios from "axios";
 // "https://crudcrud.com/api/" + apiKey + "/selectedItems",
 
 const api = Axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com/",
+  baseURL:
+    "https://jsonplaceholder.typicode.com/SaitejareddyTileti-0293/ShoppingWebsite/db",
 });
 
 class ItemsList extends Component {
