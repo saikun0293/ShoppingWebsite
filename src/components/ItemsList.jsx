@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import data from "../itemsList.json";
 import Axios from "axios";
 
-let apiKey = "8768bbc746d64e96b651cf4162eedb15";
+let apiKey = "ede6ba87020240a9ace0ddc9e470ba3f";
 
 const api = Axios.create({
   baseURL: "https://crudcrud.com/api/" + apiKey + "/selectedItems",
