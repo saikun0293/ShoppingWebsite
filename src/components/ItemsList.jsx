@@ -4,7 +4,7 @@ import Axios from "axios";
 
 const api = Axios.create({
   baseURL:
-    "https://crudcrud.com/api/2982f1a0023140af943bf92217409658/selectedItems",
+    " https://my-json-server.typicode.com/SaitejareddyTileti-0293/ShoppingWebsiteServer",
 });
 
 class ItemsList extends Component {
