@@ -4,7 +4,7 @@ import Axios from "axios";
 
 const api = Axios.create({
   baseURL:
-    "https://crudcrud.com/Dashboard/2982f1a0023140af943bf92217409658/selectedItems",
+    "https://crudcrud.com/api/2982f1a0023140af943bf92217409658/selectedItems",
 });
 
 class ItemsList extends Component {
