@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import data from "../itemsList.json";
 import Axios from "axios";
 
+let apiKey = "8768bbc746d64e96b651cf4162eedb15";
+
 const api = Axios.create({
-  baseURL:
-    "https://crudcrud.com/api/2982f1a0023140af943bf92217409658/selectedItems",
+  baseURL: "https://crudcrud.com/api/" + apiKey + "/selectedItems",
 });
 
 class ItemsList extends Component {
@@ -15,8 +16,7 @@ class ItemsList extends Component {
     flexWrap: "wrap",
   };
 
-  handlePostRequest = (data, event) => {
-    console.log(event);
+  handlePostRequest = (data) => {
     data.quantity = 1;
     api.get("/").then(function (res) {
       const items = res.data;
@@ -28,13 +28,13 @@ class ItemsList extends Component {
         api
           .post("/", { data })
           .then(function (res) {
-            console.log("Posted Successfully!");
+            window.alert("Product successfully added into the list!");
           })
           .catch(function (error) {
             console.log(error);
           });
       } else {
-        window.alert("Product already added to the list");
+        window.alert("Product is already added into the shopping list!");
       }
     });
   };
@@ -75,7 +75,7 @@ class ItemsList extends Component {
             <div className="card-body">
               <button
                 className="btn btn-dark"
-                onClick={(e) => this.handlePostRequest(d, e)}
+                onClick={() => this.handlePostRequest(d)}
               >
                 <i className="fas fa-cart-plus"></i>
               </button>

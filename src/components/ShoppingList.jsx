@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import Axios from "axios";
 import "../styles/ShoppingList.css";
 
+let apiKey = "8768bbc746d64e96b651cf4162eedb15";
+
 const api = Axios.create({
-  baseURL:
-    "https://crudcrud.com/api/2982f1a0023140af943bf92217409658/selectedItems",
+  baseURL: "https://crudcrud.com/api/" + apiKey + "/selectedItems",
 });
 
 class ShoppingList extends Component {
@@ -20,7 +21,6 @@ class ShoppingList extends Component {
   }
 
   handleDelete = (d) => {
-    console.log(d);
     api.delete("/" + d._id).then(function (res) {
       console.log(res);
     });
