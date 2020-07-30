@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import data from "../itemsList.json";
 import Axios from "axios";
-
-// let apiKey = "ede6ba87020240a9ace0ddc9e470ba3f";
-// "https://crudcrud.com/api/" + apiKey + "/selectedItems",
+import apiKey from "./apikey";
 
 const api = Axios.create({
-  baseURL:
-    "https://jsonplaceholder.typicode.com/SaitejareddyTileti-0293/ShoppingWebsite/db",
+  baseURL: "https://crudcrud.com/api/" + apiKey + "/selectedItems",
 });
 
 class ItemsList extends Component {
