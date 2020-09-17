@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import ShoppingList from "./components/ShoppingList";
 import Navbar from "./components/Navbar";
 import HomePage from "./components/HomePage";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/">
       <React.Fragment>
         <Navbar />
         <Switch>
