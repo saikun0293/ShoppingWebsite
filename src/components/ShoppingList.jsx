@@ -1,76 +1,33 @@
 import React, { Component } from "react";
-import Axios from "axios";
+import { connect } from "react-redux";
+import { deleteItem, incQuantity, decQuantity } from "../redux";
 import "../styles/ShoppingList.css";
-import apiKey from "./apikey";
-
-const api = Axios.create({
-  baseURL: "https://crudcrud.com/api/" + apiKey + "/selectedItems",
-});
 
 class ShoppingList extends Component {
-  state = {
-    items: [],
-  };
-
-  componentDidMount() {
-    api.get("/").then((res) => {
-      let items = res.data;
-      this.setState({ items });
-    });
-  }
-
-  handleDelete = (d) => {
-    api.delete("/" + d._id).then(function (res) {
-      console.log(res);
-    });
-
-    const items = this.state.items;
-    const index = items.indexOf(d);
-    items.splice(index, 1);
-    this.setState({ items });
-  };
-
-  handleIncrement = (d) => {
-    d.data.quantity++;
-    const items = this.state.items;
-    const index = items.indexOf(d);
-    items[index] = { ...d };
-    this.setState({ items });
-  };
-
-  handleDecrement = (d) => {
-    if (d.data.quantity > 1) {
-      d.data.quantity--;
-    }
-    const items = this.state.items;
-    const index = items.indexOf(d);
-    items[index] = { ...d };
-    this.setState({ items });
-  };
-
-  purchased() {
-    if (this.state.items.length !== 0) {
+  purchased = () => {
+    if (this.props.items.length !== 0) {
       window.alert("Products purchased successfully!");
     } else {
       window.alert("No products to purchase!");
     }
-  }
+  };
 
   render() {
+    // console.log(this.props.items);
     return (
       <div className="list-container">
         <div className="list-title">Your Shopping List</div>
         <ul className="shoppingListTable">
-          {this.state.items.map((d) => {
-            let item = d.data;
+          {this.props.items.map((d) => {
+            let item = d;
             return (
-              <div key={d._id} className="row">
+              <div key={d.id} className="row">
                 <div className="item col-md-11">
                   <li>{item.productDisplayName}</li>
                   <span>
                     <i
                       className="fas fa-minus-circle"
-                      onClick={() => this.handleDelete(d)}
+                      onClick={() => this.props.deleteItem(d)}
                     ></i>
                   </span>
                 </div>
@@ -80,13 +37,15 @@ class ShoppingList extends Component {
                     <span>
                       <i
                         className="fas fa-angle-up"
-                        onClick={() => this.handleIncrement(d)}
+                        onClick={() => this.props.incQuantity(d)}
                       ></i>
                     </span>
                     <span>
                       <i
                         className="fas fa-angle-down"
-                        onClick={() => this.handleDecrement(d)}
+                        onClick={() =>
+                          d.quantity > 1 ? this.props.decQuantity(d) : null
+                        }
                       ></i>
                     </span>
                   </div>
@@ -109,4 +68,18 @@ class ShoppingList extends Component {
   }
 }
 
-export default ShoppingList;
+const mapStateToProps = (state) => {
+  return {
+    items: state.items,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteItem: (i) => dispatch(deleteItem(i)),
+    incQuantity: (i) => dispatch(incQuantity(i)),
+    decQuantity: (i) => dispatch(decQuantity(i)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList);

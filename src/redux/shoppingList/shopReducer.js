@@ -5,12 +5,16 @@ const items = {
 };
 
 const itemsReducer = (state = items, action) => {
+  console.log(action);
   const item = action.payload;
-  const id = item.id;
-  const index = state.items.findIndex((x) => x.id === id);
+  let id, index;
+  if (action.hasOwnProperty(id)) {
+    id = item.id;
+    index = state.items.findIndex((x) => x.id === id);
+  }
   switch (action.type) {
     case ADD_ITEM:
-      state.items.append(item);
+      state.items.push(item);
       return {
         items: state.items,
       };

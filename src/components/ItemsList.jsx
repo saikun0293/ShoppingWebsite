@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import data from "../itemsList.json";
-import Axios from "axios";
-import apiKey from "./apikey";
-
-const api = Axios.create({
-  baseURL: "https://crudcrud.com/api/" + apiKey + "/selectedItems",
-});
+import { connect } from "react-redux";
+import { addItem } from "../redux";
 
 class ItemsList extends Component {
   cardsStyle = {
@@ -17,25 +13,10 @@ class ItemsList extends Component {
 
   handlePostRequest = (data) => {
     data.quantity = 1;
-    api.get("/").then(function (res) {
-      const items = res.data;
-      if (
-        !items.some(
-          (item) => item.data.productDisplayName === data.productDisplayName
-        )
-      ) {
-        api
-          .post("/", { data })
-          .then(function (res) {
-            window.alert("Product successfully added into the list!");
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      } else {
-        window.alert("Product is already added into the shopping list!");
-      }
-    });
+    const items = this.props.items;
+    if (!items.some((item) => item.id === data.id)) {
+      this.props.addItem(data);
+    }
   };
 
   render() {
@@ -87,4 +68,16 @@ class ItemsList extends Component {
   }
 }
 
-export default ItemsList;
+const mapStateToProps = (state) => {
+  return {
+    items: state.items,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addItem: (i) => dispatch(addItem(i)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ItemsList);

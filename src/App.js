@@ -4,7 +4,7 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import ShoppingList from "./components/ShoppingList";
 import Navbar from "./components/Navbar";
 import HomePage from "./components/HomePage";
-import { Provider } from "redux";
+import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
 class App extends Component {
