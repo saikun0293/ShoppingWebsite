@@ -1,13 +1,9 @@
 import {
-    addItem,
-    deleteItem,
-    incQuantity,
-    decQuantity
-} from "./shoppingList/shopActions"
+  addItem,
+  deleteItem,
+  incQuantity,
+  decQuantity,
+  deleteAll,
+} from "./shoppingList/shopActions";
 
-export {
-    addItem,
-    deleteItem,
-    incQuantity,
-    decQuantity
-}
+export { addItem, deleteItem, incQuantity, decQuantity, deleteAll };

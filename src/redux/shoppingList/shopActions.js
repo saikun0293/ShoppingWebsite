@@ -1,4 +1,10 @@
-import { ADD_ITEM, DELETE_ITEM, INC_QUANTITY, DEC_QUANITTY } from "./shopTypes";
+import {
+  ADD_ITEM,
+  DELETE_ITEM,
+  INC_QUANTITY,
+  DEC_QUANITTY,
+  DELETE_ALL,
+} from "./shopTypes";
 
 const addItem = (item) => {
   return {
@@ -28,4 +34,10 @@ const decQuantity = (item) => {
   };
 };
 
-export { addItem, deleteItem, incQuantity, decQuantity };
+const deleteAll = () => {
+  return {
+    type: DELETE_ALL,
+  };
+};
+
+export { addItem, deleteItem, incQuantity, decQuantity, deleteAll };

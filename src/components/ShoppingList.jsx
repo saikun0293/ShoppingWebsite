@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { deleteItem, incQuantity, decQuantity } from "../redux";
+import { deleteItem, incQuantity, decQuantity, deleteAll } from "../redux";
 import "../styles/ShoppingList.css";
 
 class ShoppingList extends Component {
   purchased = () => {
     if (this.props.items.length !== 0) {
       window.alert("Products purchased successfully!");
+      this.props.deleteAll();
     } else {
       window.alert("No products to purchase!");
     }
@@ -20,6 +21,7 @@ class ShoppingList extends Component {
         <ul className="shoppingListTable">
           {this.props.items.map((d) => {
             let item = d;
+            console.log(item);
             return (
               <div key={d.id} className="row">
                 <div className="item col-md-11">
@@ -79,6 +81,7 @@ const mapDispatchToProps = (dispatch) => {
     deleteItem: (i) => dispatch(deleteItem(i)),
     incQuantity: (i) => dispatch(incQuantity(i)),
     decQuantity: (i) => dispatch(decQuantity(i)),
+    deleteAll: () => dispatch(deleteAll()),
   };
 };
 
